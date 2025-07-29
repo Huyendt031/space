@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Đặng Thanh Huyền | Trang Cá Nhân</title>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(to right, #F3E5AB, #FFE0B2);
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    header {
+      background: linear-gradient(135deg, #FF6F61, #D32F2F);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.4rem;
+      margin-top: 10px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Centering the content */
+    }
+
+    .avatar-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+      transition: transform 0.3s ease; /* Add transition */
+    }
+
+    .avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #FF6F61;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: transform 0.3s; /* Avatar enlargement */
+    }
+
+    .avatar:hover {
+      transform: scale(1.1); /* Enlarge avatar on hover */
+    }
+
+    h2 {
+      color: #D32F2F;
+      margin: 20px 0;
+      font-size: 2rem;
+      text-align: center; /* Centered heading */
+    }
+
+    p, li {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      text-align: center; /* Centered text */
+    }
+
+    a {
+      color: #1976D2;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background-color: #f2f2f2;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      margin-top: 40px;
+    }
+
+    #changeSloganBtn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #ffffff;
+      color: #D32F2F;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease, transform 0.2s;
+      font-size: 1.1rem;
+    }
+
+    #changeSloganBtn:hover {
+      background: #ffe0b2;
+      transform: scale(1.05);
+    }
+    
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Đặng Thanh Huyền</h1>
+    <p>Sinh viên Đại học Đại Nam</p>
+    <button id="changeSloganBtn">Đổi màu nền</button>
+  </header>
+
+  <div class="container">
+    <div class="avatar-container">
+      <img src="https://images2.thanhnien.vn/528068263637045248/2024/5/2/hon-yen-17146213985251805397905.jpg" 
+        alt="Ảnh đại diện" class="avatar" />
+    </div>
+
+    <section>
+      <h2>🧑‍💻 Giới thiệu</h2>
+      <p>Xin chào! Mình là sinh viên CNTT tại Đại học Đại Nam. Mình có niềm đam mê với lập trình, AI và phân tích dữ liệu. Mình luôn tìm kiếm cơ hội để học hỏi, thực hành và cộng tác trong các dự án thực tế.</p>
+    </section>
+
+    <section>
+      <h2>🚀 Kỹ năng</h2>
+      <ul>
+        <li>Ngôn ngữ: Python, JavaScript, HTML, CSS</li>
+        <li>Kỹ năng mềm: Làm việc nhóm, thuyết trình, quản lý thời gian</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>📚 Sở thích</h2>
+      <p>Mình thích đọc sách, đặc biệt là các thể loại sách công nghệ và khoa học viễn tưởng.</p>
+    </section>
+
+    <section>
+      <h2>📬 Liên hệ</h2>
+      <p>Email: <a href="mailto:dangthanhhuyen1990@gmail.com">dangthanhhuyen1990@gmail.com</a></p>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 Đặng Thanh Huyền. Thiết kế bởi Tôi.
+  </footer>
+
+  <script>
+    const slogan = document.querySelector('header p');
+    const changeSloganBtn = document.getElementById('changeSloganBtn');
+    const slogans = [
+      'Sinh viên Đại học Đại Nam',
+      'Người yêu thích phát triển website & AI',
+      'Luôn học hỏi và thử thách bản thân mỗi ngày'
+    ];
+    let sloganIndex = 0;
+
+    changeSloganBtn.addEventListener('click', () => {
+      sloganIndex = (sloganIndex + 1) % slogans.length;
+      slogan.textContent = slogans[sloganIndex];
+      document.body.style.background = `linear-gradient(to right, ${randomColor()}, ${randomColor()})`;
+    });
+
+    const avatar = document.querySelector('.avatar');
+    
+    avatar.addEventListener('mouseenter', () => {
+      avatar.style.borderColor = '#FFB74D'; // Đổi màu viền sang vàng
+    });
+
+    avatar.addEventListener('mouseleave', () => {
+      avatar.style.borderColor = '#FF6F61'; // Trả lại màu đỏ cũ
+    });
+
+    // Hàm tạo màu ngẫu nhiên
+    function randomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+  </script>
+</body>
+</html>
